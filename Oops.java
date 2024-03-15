@@ -1,5 +1,6 @@
+// import java.util.Scanner;
 
-    public class Oops {
+public class Oops {
         public static void main(String args[]){
             // Pen p1 = new Pen();  //constructor,created a pen class p1
             // p1.color = "yellow";
@@ -35,10 +36,12 @@
             // doby.legs=4;
             // System.out.println(doby.legs);
             // System.out.println(doby);
-            Calculator calc =new Calculator();
-            System.out.println(calc.sum((float)1.5,(float)1.5 ));
-            System.out.println(calc.sum(1,2,4));
-
+            // Calculator calc =new Calculator();
+            // System.out.println(calc.sum((float)1.5,(float)1.5 ));
+            // System.out.println(calc.sum(1,2,4));\
+            // Deer d=new Deer();
+            // d.eat();
+            // Scanner sc = new Scanner(System.in);
             
         }
     }
@@ -54,12 +57,11 @@
     //         this.name=s1.name;
     //         this.roll=s1.roll;
     //         this.marks=s1.marks;
-
     //     }
     
         
-    //     Student (){
-    //         marks=new int[3];
+    //Student (){
+    //  marks=new int[3];
     //         System.out.println("constructor");
     //     }
     //     Student(String name){
@@ -67,39 +69,59 @@
     //         this.name = name;
     //     }
     // }
+
 // class Animal{
 //     void eat(){
 //         System.out.println("eats");
-
 //     }
 //     void breath(){
 //         System.out.println("breaths");       
-
 //     }
 // }
-// class Mammal extends Animal{
-//     int legs;
+
+// class Deer extends Animal{
+//     // int legs;
+//     void eat(){
+//         System.out.println("eats grass");
+//     }
 // }
+
 // class Dogs extends Mammal{
 //     int bread;
 // }
 
 // class Fish extends Animal{
-
 //     void swim(){
 //         System.out.println("swims");
 //     }
 // }
-// function over loading
-class Calculator{
-    int sum(int a,int b){
-        return a+b;
-    }
-    float sum(float a,float b){
-        return a+b;
-    }
-    int sum(int a,int b,int c){
-        return a+b+c;
-    }
-    
-}
+
+// function over loading and function over riding
+
+// class Calculator{
+//     int sum(int a,int b){
+//         return a+b;
+//     }
+//     float sum(float a,float b){
+//         return a+b;
+//     }
+//     int sum(int a,int b,int c){
+//         return a+b+c;
+//     }
+// }
+
+// Abstract
+
+// abstract class Animal{
+//     String color;
+//     abstract void walk();
+//     Animal(){
+//         color="brown";
+//     }
+// }
+// class Horse extends Animal{
+//     void walk(){
+//         System.out.println("walk on 4 legs");
+//     }
+// }
+
