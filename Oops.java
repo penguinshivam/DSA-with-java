@@ -36,7 +36,9 @@
             // System.out.println(doby.legs);
             // System.out.println(doby);
             Calculator calc =new Calculator();
-            
+            System.out.println(calc.sum((float)1.5,(float)1.5 ));
+            System.out.println(calc.sum(1,2,4));
+
             
         }
     }
@@ -88,7 +90,7 @@
 //         System.out.println("swims");
 //     }
 // }
-
+// function over loading
 class Calculator{
     int sum(int a,int b){
         return a+b;
