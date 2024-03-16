@@ -42,11 +42,25 @@ public class Oops {
             // Deer d=new Deer();
             // d.eat();
             // Scanner sc = new Scanner(System.in);
+            // Queen q=new Queen();
+            // q.moves();
+            // Student s1=new Student();
+            // s1.Schoolname="njms";
+            // Student s2=new Student();
             
+            // System.out.println(s2.Schoolname);
+            // Student s3=new Student();
+            // s3.Schoolname="jawc";
+            // System.out.println(s1.Schoolname);
+            // System.out.println(s2.Schoolname);
+            // System.out.println(s3.Schoolname);
+                Deer d=new Deer();
+                System.out.println(d.color);
+
         }
     }
 
-    
+    // {
     //  constructor 
     // class Student{
     //     String name;
@@ -57,9 +71,7 @@ public class Oops {
     //         this.name=s1.name;
     //         this.roll=s1.roll;
     //         this.marks=s1.marks;
-    //     }
-    
-        
+    //     }    
     //Student (){
     //  marks=new int[3];
     //         System.out.println("constructor");
@@ -69,7 +81,6 @@ public class Oops {
     //         this.name = name;
     //     }
     // }
-
 // class Animal{
 //     void eat(){
 //         System.out.println("eats");
@@ -78,26 +89,21 @@ public class Oops {
 //         System.out.println("breaths");       
 //     }
 // }
-
 // class Deer extends Animal{
 //     // int legs;
 //     void eat(){
 //         System.out.println("eats grass");
 //     }
 // }
-
 // class Dogs extends Mammal{
 //     int bread;
 // }
-
 // class Fish extends Animal{
 //     void swim(){
 //         System.out.println("swims");
 //     }
 // }
-
 // function over loading and function over riding
-
 // class Calculator{
 //     int sum(int a,int b){
 //         return a+b;
@@ -109,9 +115,7 @@ public class Oops {
 //         return a+b+c;
 //     }
 // }
-
 // Abstract
-
 // abstract class Animal{
 //     String color;
 //     abstract void walk();
@@ -124,4 +128,63 @@ public class Oops {
 //         System.out.println("walk on 4 legs");
 //     }
 // }
+// interfaces (multiple inhertance)(total abstraction)
+// interface ChessPlayer {
+//     void moves();
+    
+// }
+// class Queen implements ChessPlayer{
+//     public void moves(){
+//         System.out.println("up,down,left,right,diagonal");
+//     }
+// }
+// class rook implements ChessPlayer{
+//     public void moves(){
+//         System.out.println("up,down,left,right");
+//     }
+// }
+// class king implements ChessPlayer{
+//     public void moves(){
+//         System.out.println("up,down,left,right,diagonal(by 1 step)");
+//     }
+// }
+//} 
 
+// class Student{
+//     static int returnpercentage(int phy,int maths,int chem){
+//         return (maths+phy+chem)/3;
+//     }
+//     String name;
+//     int roll;
+//     static String Schoolname;
+//     void setname(String name){
+//         this.name=name;
+//     }
+//     String getname(){
+//         return this.name;
+//     }
+// }
+
+class Animal{
+    String color="black";
+    Animal(){
+        System.out.println("animal constuctor");
+    }
+    void eat(){
+        System.out.println("eats");
+    }
+    void breath(){
+        System.out.println("breaths");       
+    }
+}
+class Deer extends Animal{
+    
+    Deer(){
+        super.color="brown";
+        
+        System.out.println("deer constuctor");
+    }
+    void eat(){
+        System.out.println("eats grass");
+    }
+}
