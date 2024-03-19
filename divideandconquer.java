@@ -63,17 +63,19 @@ public class divideandconquer {
 
 
     public static void quicksort(int arr[],int si,int ei) {
-        if (si<ei) {
+        if (si>=ei) {
+            return;   
+        }
             int pi=partition(arr, si, ei);
             quicksort(arr, si, pi-1);
             quicksort(arr, pi+1, ei);
-        }
+        
     }
 
     public static void main(String[] args) {
         int arr[] = {5,11,7,8,1,0};
-        mergesort(arr, 0, arr.length-1);
-        // quicksort(arr, 0, arr.length-1);
+        // mergesort(arr, 0, arr.length-1);
+        quicksort(arr, 0, arr.length-1);
         printarray(arr);
     }
 }
