@@ -59,7 +59,11 @@ public class divideandconquer {
         arr[ei]=temp;
         return i+1;
     }
-    // public static void 
+    public static void swap(int arr[],int i,int j) {
+        int temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
 
 
     public static void quicksort(int arr[],int si,int ei) {
@@ -70,6 +74,46 @@ public class divideandconquer {
             quicksort(arr, si, pi-1);
             quicksort(arr, pi+1, ei);
         
+    }
+    public static void rotatedsortedarray(int arr[],int key) {
+        int pivot=0;
+        for (int i = 0; i < arr.length-1; i++) {
+            if (arr[i]>arr[i+1]) {
+                pivot=i;
+                break;
+            }
+        }
+        int first=firstoccurence(arr, key, 0, pivot);
+        int second=firstoccurence(arr, key, pivot+1, arr.length-1);
+        if (first==-1 && second==-1) {
+            System.out.println("Element not found");
+        }
+        else if (first==-1) {
+            System.out.println("Element found at "+second);
+        }
+        else{
+            System.out.println("Element found at "+first);
+        }
+    }
+    public static int firstoccurence(int arr[],int key,int si,int ei) {
+        if (si>ei) {
+            return -1;
+        }
+        int mid=si+(ei-si)/2;
+        if (arr[mid]==key) {
+            if (mid==0 || arr[mid-1]!=key) {
+                return mid;
+            }
+            else{
+                return firstoccurence(arr, key, si, mid-1);
+            }
+        }
+        else if (arr[mid]>key) {
+            return firstoccurence(arr, key, si, mid-1);
+        }
+        else{
+            return firstoccurence(arr, key, mid+1, ei);
+        }
     }
 
     public static void main(String[] args) {
