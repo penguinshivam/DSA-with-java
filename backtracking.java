@@ -79,40 +79,68 @@ public class backtracking {
         }
         return true;
     }
-
+    
     // n queen 
-    public static void nqueen(char board[][],int row){
+    public static boolean nqueen(char board[][],int row){
         
         if (row==board.length) {
-            printboard(board);
-            return;
+            // printboard(board);
+            count ++;
+            return true;
         }
         for (int j = 0; j < board.length; j++) {
             if(isSafe(board,row,j)){
                 board[row][j]='Q';
-                nqueen(board, row+1);
-                board[row][j]='.';
+                // nqueen(board, row+1);
+                // board[row][j]='.';
+                if (nqueen(board, row+1)) 
+                {return true;}
             }
+            board[row][j]='.';
         }
-
+        return false;
     }
     
-    
+    static int count=0;
+
+    // grid ways
+    public static int gridways(int i,int j,int n ,int m) {
+        if (i==n-1 && j==m-1) {
+            return 1;
+        }
+        else if (i==n||j==m){
+            return 0;
+        }
+        int w1=gridways(i+1, j, n, m);
+        int w2=gridways(i, j+1, n, m);
+        return w1+w2;
+        
+    }
+    // (n-1 + m-1)!
+    // (n-1)! (m-1)!
     
     public static void main(String[] args) {
         // int arr[]=new int[5];
         // change(arr,0,1);
         // subSets("abc", "", 0);
         // permutation("abc","");
-        int n =4;
-        char board [][]=new char [n][n];
-        // initial
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                board[i][j]='.';
-            }
-        }
-        nqueen(board,0);
+        // int n =8;
+        // char board [][]=new char [n][n];
+        // // initial
+        // for (int i = 0; i < n; i++) {
+        //     for (int j = 0; j < n; j++) {
+        //         board[i][j]='.';
+        //     }
+        // }
+        // if(nqueen(board,0)){
+        //     System.out.println("solution is possible");
+        //     printboard(board);
+        // }else{
+        //     System.out.println("solution is not possible");
+        // }
+        // System.out.println(count);
         // printarr(arr);
+        int n=3,m=3;
+        System.out.println(gridways(0,0,n,m));
     }
 }
