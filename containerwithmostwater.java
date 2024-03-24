@@ -12,6 +12,27 @@ public class containerwithmostwater {
             }
         }
         return maxwater;
+    }
+
+    // optimise
+    public static int optimise(ArrayList<Integer> height) {
+        int lp=0;
+        int rp=height.size()-1;
+        int maxwater=0;
+        while (lp<rp) {
+            if (height.get(lp)<height.get(rp)) {
+                lp++;
+            }
+            else{
+                rp--;
+            }
+            int ht = Math.min(height.get(lp),height.get(rp));
+            int width = rp-lp;
+            int curr=ht*width;
+            maxwater=Math.max(maxwater,curr);
+            
+        }
+        return maxwater;
         
     }
     public static void main(String[] args) {
@@ -25,6 +46,7 @@ public class containerwithmostwater {
         height.add(8);
         height.add(3);
         height.add(7);
-        System.out.println(store(height));
+        // System.out.println(store(height));
+        System.out.println(optimise(height));
     }
 }

@@ -45,8 +45,7 @@ public class sudokusolver {
                 }
                 sudoku[row][col]=0;
                 
-            }
-            
+            }   
         }
         return false;
     }
