@@ -182,35 +182,92 @@ public class linkdlist {
         }
         temp1.next=temp1.next.next;
         return;
-
-
     }
+
+
+// palindrome in linklist
+// find middle node
+// 2 nd half reverse
+// check weather the 2nd half is equal to first
+
+// slow -fast 
+/*slow =+1
+  fast =+2
+  for even case if fast = null then slow is at mid element 
+  for odd case fast.next = null then slow is at mid element 
+  condition (fast != null && fast.next!=null)
+ */
+    public node findmid(node head){
+        node fast= head;
+        node slow= head;
+        while (fast != null && fast.next!=null) {
+            slow = slow.next;
+            fast=fast.next.next;
+        }
+        return slow;//because slow is middle
+    }
+
+    public boolean checkpalindrome(){
+        if (head == null||head.next==null){
+            return true;
+        }
+        node midnode= findmid(head);
+
+
+        node previous=null;
+        node current=midnode;
+        while (current!=null) {
+        node next=current.next;
+        current.next=previous;
+        previous=current;
+        current=next;
+        }
+        node righthead=previous;
+        node lefthead= head;
+
+        while (righthead!=null) {
+            if (righthead.data!=lefthead.data) {
+                return false;
+            }
+            lefthead=lefthead.next;
+            righthead=righthead.next;
+        }
+        return true;
+    }
+
+    
     public static void main(String[] args) {
         linkdlist l1=new linkdlist();
         
-        l1.printlinklist();
-        l1.addfirst(2);
-        l1.printlinklist();
-        l1.addfirst(1);
-        l1.printlinklist();
-        l1.addlast(4);
-        l1.printlinklist();
-        l1.addlast(6);
-        l1.printlinklist();
-        l1.addlast(7);
-        l1.printlinklist();
-        l1.addmiddle(2,3);
-        l1.printlinklist();
+        // l1.printlinklist();
+        // l1.addfirst(2);
+        // l1.printlinklist();
+        // l1.addfirst(1);
+        // l1.printlinklist();
+        // l1.addlast(4);
+        // l1.printlinklist();
+        // l1.addlast(6);
+        // l1.printlinklist();
+        // l1.addlast(7);
+        // l1.printlinklist();
+        // l1.addmiddle(2,3);
+        // l1.printlinklist();
         // l1.removefirst();
         // l1.printlinklist();
         // l1.removelast();
         // l1.printlinklist();
         // System.out.println(l1.searchrecursive(4));
         // l1.reverse();
-        l1.removenthfromlast(3);
+        // l1.removenthfromlast(3);
+        // l1.printlinklist();
+        l1.addfirst(1);
+        l1.addfirst(2);
+        l1.addfirst(3);
+        l1.addfirst(1);
         l1.printlinklist();
+        System.out.println(l1.checkpalindrome());
 
-        System.out.println(size);
+        // System.out.println(size);
 
     }    
 }
