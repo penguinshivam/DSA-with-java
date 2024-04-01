@@ -1,4 +1,4 @@
-import java.util.Array;
+// import java.util.*;
 public class sorting {
     
 public static int compare(int a,int b){
@@ -21,7 +21,7 @@ public static void counting(int arr[]){
     for( int i = 0;i<arr.length;i++){
         largest = Math.max(largest,arr[i]);
     }
-    int count[] = new int[largesr+1];
+    int count[] = new int[largest+1];
     for(int i = 0;i<arr.length;i++){
         count[arr[i]]++;
 
@@ -38,10 +38,10 @@ public static void counting(int arr[]){
     
 }
 public static void main(String args[]){
-    int arr = {5,4,1,3,2};
+    // int arr[] = {5,4,1,3,2};
     // Array.sort(arr);
     // array.sort(arr,start,end)        ----.Array
     // array.sort(arr,start,end,collection.reverseOrder())    ---.collections; works on oject type (int-->integer)
-    counting(arr);
-    printArr(arr);
+    // counting(arr);
+    // printArr(arr);
 }
