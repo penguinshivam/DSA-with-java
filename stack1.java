@@ -103,7 +103,30 @@ public class stack1 {
         pushAtBottom(s,top);
     }
     public static void printStack(Stack<Integer> s){
-        
+        while (!s.isEmpty()) {
+            System.out.println(s.peek());
+            s.pop();
+        }
+    }
+    public static void stockSpan(int stocks[],int span[]) {
+        Stack<Integer> s =new Stack<>() ;
+        s.push(0);
+        span[0]=1;
+        for (int i = 1; i < stocks.length; i++) {
+            int currprice=stocks[i];
+            while (!s.isEmpty() && currprice>stocks[s.peek()]) {
+                s.pop();
+            }
+            if (s.isEmpty()) {
+                span[i]=i+1;
+            }
+            else{
+                int prevhigh=s.peek();
+                span[i]=i-prevhigh;
+
+            }
+            s.push(i);
+        }
     }
     public static void main(String[] args) {
 
@@ -112,14 +135,15 @@ public class stack1 {
         s1.push(1);
         s1.push(2);
         s1.push(3);
+        int stocks[]={100,80,60,70,60,85,100};
+        int span[]=new int[stocks.length];
+        stockSpan(stocks,span);
         // pushAtBottom(s1, 4);
-        // while (!s1.isEmpty()) {
-        //     System.out.println(s1.peek());
-        //     s1.pop();
-        // }
-        printStack(s1);
-        reverseStack(s1);
-        printStack(s1);
+        for (int i = 0; i < span.length; i++) {
+            System.out.println(span[i]+" ");
+        }
+        // reverseStack(s1);
+        // printStack(s1);
         
         // String str ="abc";
         // String result = reverseString(str);
