@@ -152,7 +152,7 @@ public class linklist2 {
         l1.addfirst(4);
         l1.printlinklist();
         
-        l1.head=l1.mergesort(l1.head);
+        // l1.head=l1.mergesort(l1.head);
         l1.printlinklist();
 
     }

@@ -1,5 +1,4 @@
-import java.util.*; 
- public class javaBasic2 {
+ public class operator {
     public static void main (String agrs[]){
 
     

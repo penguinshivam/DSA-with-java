@@ -118,6 +118,6 @@ public class dlinklist {
         dll.reverse();
         dll.printlinklist();
 
-        System.out.println(dll.size);
+        // System.out.println(dll.size);
     }
 }
