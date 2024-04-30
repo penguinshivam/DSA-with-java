@@ -72,7 +72,31 @@ public class binarytree3 {
         }
         return root;
     }
-    
+    public static int lcadistance(node root,int n) {
+        if (root==null) {
+            return -1;
+        }
+        if (root.data==n) {
+            return 0; 
+        }
+        int leftdis=lcadistance(root.left, n);
+        int rightdis=lcadistance(root.right, n);
+        if (leftdis==-1&&rightdis==-1) {
+            return -1;
+        }
+        else if (leftdis == -1) {
+            return rightdis+1;
+        }
+        else{
+            return leftdis+1;
+        }
+    }
+    public static int minddistancebtnodes(node root,int n1,int n2) {
+        node lca =lca2(root, n1, n2);
+        int dist1=lcadistance(lca,n1);
+        int dist2=lcadistance(lca,n2);
+        return dist1+dist2;
+    }
 
         public static void main(String[] args) {
         System.out.println("      1");
@@ -92,6 +116,6 @@ public class binarytree3 {
 
         System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
         System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
-        // System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
+        System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
     }
 }
