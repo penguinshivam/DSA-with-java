@@ -43,6 +43,37 @@ public class binarytree3 {
        return false;
 
     }
+    public static node lowestcommonancestor(node root,int n1,int n2) {
+        ArrayList<node> path1= new ArrayList<>();
+        ArrayList<node> path2= new ArrayList<>();
+        getpath(root,n1,path1);
+        getpath(root,n2,path2);
+        int i=0;
+        for (; i < path1.size() && 1<path2.size(); i++) {
+            if (path1.get(i)!=path2.get(i)) {
+                break;
+            }
+        }
+        node lowestcommonancestor=path1.get(i-1);
+        return lowestcommonancestor;
+    }
+    public static node lca2(node root,int n1,int n2) {
+        if (root==null||root.data==n1||root.data==n2) {
+            return root;
+        }
+        node leftlca=lca2(root.left, n1, n2);
+        node rightlca=lca2(root.right, n1, n2);
+
+        if (leftlca==null) {
+            return rightlca;
+        }
+        if (rightlca==null) {
+            return leftlca;
+        }
+        return root;
+    }
+    
+
         public static void main(String[] args) {
         System.out.println("      1");
         System.out.println("   2      3");
@@ -57,10 +88,10 @@ public class binarytree3 {
         System.out.println("element at k level of binary tree are");
         klevel(root, 1, 3);
         System.out.println();
-        // int n1=4 , n2=6;
+        int n1=4 , n2=6;
 
-        // System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
-        // System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
+        System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
+        System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
         // System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
     }
 }
