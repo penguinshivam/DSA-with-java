@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class binarytree3 {
     static class node{
@@ -36,9 +36,9 @@ public class binarytree3 {
        boolean foundleft=getpath(root.left, n, path);
        boolean foundright=getpath(root.right, n, path);
 
-       if (foundleft||foundright) {
+        if (foundleft||foundright) {
             return true;
-       }
+        }
        path.remove(path.size()-1);
        return false;
 
@@ -97,7 +97,31 @@ public class binarytree3 {
         int dist2=lcadistance(lca,n2);
         return dist1+dist2;
     }
-
+    public static void kAncestorofnode(node root,int n,int k) {
+        ArrayList<node> path1= new ArrayList<>();
+        getpath(root,n,path1);
+        int r =path1.size()-1-k;
+        System.out.println(path1.get(r).data);
+    }
+    public static int kAncestorofnodeopt(node root,int n,int k) {
+        
+        if (root==null) {
+            return -1;
+        }
+        if (root.data==n) {
+            return 0;
+        }
+        int leftDist =kAncestorofnodeopt(root.left, n, k);
+        int rightDist =kAncestorofnodeopt(root.right, n, k);
+        if (leftDist==-1 &&rightDist==-1) {
+            return -1;
+        }
+        int max = Math.max(leftDist, rightDist);
+        if (max+1==k) {
+            System.out.println(root.data);
+        }
+        return max+1;
+    }
         public static void main(String[] args) {
         System.out.println("      1");
         System.out.println("   2      3");
@@ -112,10 +136,11 @@ public class binarytree3 {
         System.out.println("element at k level of binary tree are");
         klevel(root, 1, 3);
         System.out.println();
-        int n1=4 , n2=6;
-
+        int n1=6 , n2=6;
         System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
         System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
         System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
+        kAncestorofnode(root, n1, 1);
+        kAncestorofnodeopt(root, n1, 1);
     }
 }
