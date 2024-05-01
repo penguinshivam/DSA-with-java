@@ -122,6 +122,26 @@ public class binarytree3 {
         }
         return max+1;
     }
+    public static int tranfer(node root) {
+        if (root==null) {
+            return 0;
+        }
+        int leftChild=tranfer(root.left);
+        int rightChild=tranfer(root.right);
+        int data = root.data;
+        int newleft =root.left ==null ? 0 :root.left.data;
+        int newright =root.right ==null ? 0 :root.right.data;
+        root.data=newleft+leftChild+newright+rightChild;
+        return data;
+    }
+    public static void preorder(node root) {
+        if (root==null) {
+            return ;
+        }
+        System.out.print(root.data+" ");
+        preorder(root.left);
+        preorder(root.right);
+    }
         public static void main(String[] args) {
         System.out.println("      1");
         System.out.println("   2      3");
@@ -136,11 +156,13 @@ public class binarytree3 {
         System.out.println("element at k level of binary tree are");
         klevel(root, 1, 3);
         System.out.println();
-        int n1=6 , n2=6;
-        System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
-        System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
-        System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
-        kAncestorofnode(root, n1, 1);
-        kAncestorofnodeopt(root, n1, 1);
+        // int n1=6 , n2=6;
+        // System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lowestcommonancestor(root, n1, n2).data);
+        // System.out.println("lowest common ancestor of "+n1+" and "+n2+" = "+lca2(root, n1, n2).data);
+        // System.out.println("Distance between nodes "+n1+" and "+n2+" = "+minddistancebtnodes(root, n1, n2));
+        // kAncestorofnode(root, n1, 1);
+        // kAncestorofnodeopt(root, n1, 1);
+        tranfer(root);
+        preorder(root);
     }
 }
