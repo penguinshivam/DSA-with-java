@@ -40,7 +40,35 @@ public class binaryStree {
             return search(root.right, val);
         } 
     }
-    
+    public static node delete(node root,int val) {
+        if (root.data>val) {
+            root.left=delete(root.left, val);
+        }else if(root.data<val){
+            root.right= delete(root.right, val);
+        }
+        else{
+            if (root.left == null && root.right==null) {
+                return null;
+            }
+
+            if (root.left==null) {
+                return root.right;
+            }else if (root.right==null) {
+                return root.left;
+            }
+
+            node id=findinodersuccessor(root.right);
+            root.data =id.data;
+            root.right=delete(root.right, id.data);
+        } 
+        return root;
+    }
+    public static node findinodersuccessor(node root) {
+        while (root.left!=null) {
+            root =root.left;
+        }
+        return root;
+    }
     public static void inorder(node root) {
         if (root== null) {
             return;
@@ -50,7 +78,7 @@ public class binaryStree {
         inorder(root.right);
     }
     public static void main(String[] args) {
-        int value[]={5,1,3,4,2,7};
+        int value[]={8,5,3,1,4,6,10,11,14};
         node root=null;
         for (int i = 0; i < value.length; i++) {
             root=insert(root, value[i]);
@@ -62,5 +90,7 @@ public class binaryStree {
         }else{
             System.out.println("not found");
         }
+        delete(root, 4);
+        inorder(root);
     }
 }
