@@ -1,3 +1,4 @@
+import java.util.*;
 public class binaryStree {
     static class node{
         int data;
@@ -69,6 +70,40 @@ public class binaryStree {
         }
         return root;
     }
+    public static void printinrange(node root, int k1,int k2) {
+        if (root==null) {
+            return;
+        }
+        if (k1<=root.data && root.data <=k2) {
+            printinrange(root.left, k1, k2);
+            System.out.print(root.data+" ");
+            printinrange(root.right, k1, k2);
+        }
+        else if(root.data>k2){
+            printinrange(root.right, k1, k2);
+        }else  {
+            printinrange(root.left, k1, k2);
+            
+        }
+
+    }
+    public static void roottoleaf(node root,ArrayList<Integer> path) {
+        
+        if (root==null){
+            return;
+        }
+        path.add(root.data);
+        if (root.left==null&&root.right==null) {
+            for (int index = 0; index < path.size(); index++) {
+                System.out.print(path.get(index)+"-->");
+            }
+            System.out.println("N");
+
+        }
+            roottoleaf(root.left,path);
+            roottoleaf(root.right,path);
+            path.remove(path.size()-1);
+    }
     public static void inorder(node root) {
         if (root== null) {
             return;
@@ -90,7 +125,9 @@ public class binaryStree {
         }else{
             System.out.println("not found");
         }
-        delete(root, 4);
-        inorder(root);
+        // delete(root, 4);
+        // inorder(root);
+        // printinrange(root, 1, 8);
+        roottoleaf(root,new ArrayList<>());
     }
 }
