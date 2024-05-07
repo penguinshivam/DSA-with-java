@@ -52,7 +52,7 @@ public class binaryStree2 {
         root.right.right=new node(70);
         root.right.right.left=new node(65);
         root.right.right.right=new node(80);
-        info info=largestBTS(root);
+        largestBTS(root);
         System.out.println(maxBST);
 
     }

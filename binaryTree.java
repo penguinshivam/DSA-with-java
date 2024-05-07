@@ -15,7 +15,7 @@ public class binaryTree {
     }
     static class BinaryTree{
         static int idx=-1;
-        public static node buildtree(int nodes[]) {
+        public  node buildtree(int nodes[]) {
             idx++;
             if (nodes[idx]==-1) {
 
@@ -26,7 +26,7 @@ public class binaryTree {
             newnode.right=buildtree(nodes);
             return newnode;
         }
-        public static void preorder(node root) {
+        public  void preorder(node root) {
             if (root==null) {
                 // System.out.print("-1 ");
                 return;
@@ -35,7 +35,7 @@ public class binaryTree {
             preorder(root.left);
             preorder(root.right);
         }
-        public static void inorder(node root) {
+        public  void inorder(node root) {
             if (root==null) {
                 // System.out.print("-1 ");
                 return;
@@ -44,7 +44,7 @@ public class binaryTree {
             System.out.print(root.data+" ");
             inorder(root.right);
         }
-        public static void postorder(node root) {
+        public  void postorder(node root) {
             if (root==null) {
                 // System.out.print("-1 ");
                 return;
@@ -54,7 +54,7 @@ public class binaryTree {
             System.out.print(root.data+" ");
         }
         // level order
-    public static void levelOrder(node root){
+    public void levelOrder(node root){
         if( root == null){
             return;
 
