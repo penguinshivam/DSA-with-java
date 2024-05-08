@@ -37,13 +37,45 @@ public class heapQues {
         }
         System.out.println("cost of connecting n ropes = " +cost );
     }
+    static class weakt implements Comparable<weakt>{
+        int noofsol,idx;
+        public weakt(int noofsol,int idx){
+            this.noofsol=noofsol;
+            this.idx=idx;
+        }
+        @Override
+        public int compareTo(weakt w2){
+            if (this.noofsol==w2.noofsol) {
+                return this.idx-w2.idx;
+            }else{
+                return this.noofsol-w2.noofsol;
+            }
+        }
+    }
+    public static void weaksol(int army[][],int k) {
+        PriorityQueue<weakt> pq= new PriorityQueue<>();
+        for (int i = 0; i < army.length; i++) {
+            int count=0;
+            for (int j = 0; j < army[0].length; j++) {
+                count+=army[i][j]==1?1:0;
+            }
+            pq.add(new weakt(count, i));
+        }
+        for (int i = 0; i < k; i++) {
+            System.out.println("R"+pq.remove().idx);
+        }
+    }
     public static void main(String[] args) {
         int pts[][]={{3,3},{5,-1},{-2,4}};
         int k=2;
         nearbycar(pts, k);
         int ropes []={2,3,3,4,6};
         ropes(ropes);
-
-        
+        int army[][]={{1,0,0,0},
+                      {1,1,1,1},
+                      {1,1,0,0},
+                      {1,0,0,0},};
+        int t =2;
+        weaksol(army,t);    
     }
 }
