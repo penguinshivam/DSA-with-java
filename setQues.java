@@ -49,7 +49,7 @@ public class setQues {
         System.out.println();
         System.out.print(start);
         for (String key : tickets.keySet()) {
-
+            System.out.println(key);
             System.out.print("==>"+tickets.get(start));
             start=tickets.get(start);
         }

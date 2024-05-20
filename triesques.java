@@ -28,8 +28,8 @@ public class triesques {
         Node curr= root;
         for (int level = 0; level < word.length(); level++) {
             int idx=word.charAt(level)-'a';
-            if (curr.children[idx]==null) {
-                curr.children[idx]=new Node();
+            if (curr.children[idx]!=null) {
+                return false;
             }
             curr=curr.children[idx];
         }
