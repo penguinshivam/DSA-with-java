@@ -52,10 +52,40 @@ public class graphBFS {
             }
         }
     }
+    public static void dfs(ArrayList<edge> graph[],int curr,boolean vis[]){
+        System.out.print(curr+" ");
+        vis[curr]=true;
+        for (int i = 0; i < graph[curr].size(); i++) {
+            edge e = graph[curr].get(i);
+            if (!vis[e.dest]) {
+                dfs(graph,e.dest,vis);
+            }
+        }
+    }
+    public static boolean hasPath(ArrayList<edge>[] graph,int src,int dest,boolean vis[]) {
+        if (src==dest) {
+            return true;
+        }
+        vis[src]=true;
+        for (int i = 0; i < graph[src].size(); i++) {
+            edge e=graph[src].get(i);
+            if (!vis[e.dest]&&hasPath(graph, e.dest, dest, vis)) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
     public static void main(String[] args) {
         int V=7;
         ArrayList<edge>[] graph=new ArrayList[V];
         creategraph(graph);
         bfs(graph);
+        System.out.println();
+        dfs(graph, 0, new boolean[V]);
+        int src=0;
+        int dest=5;
+        System.out.println();
+        System.out.println(hasPath(graph,src,dest,new boolean[V]));
     }
 }
