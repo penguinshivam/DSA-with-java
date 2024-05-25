@@ -78,6 +78,7 @@ public class graphs2 {
     }
     public static void main(String[] args) {
         int V=7;
+        @SuppressWarnings("unchecked")
         ArrayList<edge>[] graph=new ArrayList[V];
         creategraph(graph);
     }
